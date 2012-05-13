@@ -25,6 +25,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+/**
+ * The base class describing a Database instance, used whenever a new database is to be opened.
+ *
+ * @author Adam Waldenberg <adam.waldenberg@ejwa.se>
+ * @since 0.0.1
+ */
 public class Database {
 	private final Context context;
 	private final String databaseName;
@@ -39,9 +45,11 @@ public class Database {
 	 * @param databaseName The name of the database. Usually set to something like "databaseName.db".
 	 * @param version The version of the database. Used when converting between different database versions.
 	 * @param tables A list of classes that will be used as the actual tables in the database.
+	 *
+	 * @since 0.0.1
 	 */
 	public Database(Context context, String databaseName, int version, Class<?> ...tables) {
-		final DatabaseOpenHelper databaseOpenHelper = new DatabaseOpenHelper(context, databaseName, version, tables);
+		final DatabaseOpener databaseOpenHelper = new DatabaseOpener(context, databaseName, version, tables);
 
 		this.context = context;
 		this.databaseName = databaseName;
@@ -50,7 +58,10 @@ public class Database {
 	}
 
 	/**
-	 * Creates a new database object with the given properties. As a consequence the database will not support upgrades.
+	 * Creates a new database object with the given properties, not specifying a version. As a consequence, the database
+	 * will not support upgrades.
+	 *
+	 * @since 0.0.1
 	 */
 	public Database(Context context, String databaseName, Class<?> ...tables) {
 		this(context, databaseName, 1, tables);
@@ -58,6 +69,8 @@ public class Database {
 
 	/**
 	 * @return An instance of the database object-manager associated with this database.
+	 *
+	 * @since 0.0.1
 	 */
 	public DatabaseObjectManager getDatabaseObjectManager() {
 		return databaseObjectManager;
@@ -65,6 +78,8 @@ public class Database {
 
 	/**
 	 * Closes the database.
+	 *
+	 * @since 0.0.1
 	 */
 	public void close() {
 		sqLiteDatabase.close();
@@ -72,6 +87,8 @@ public class Database {
 
 	/**
 	 * Deletes the database and removes all tables. If the database is open, it will be closed before being deleted.
+	 *
+	 * @since 0.0.1
 	 */
 	public void purge() {
 		if (databaseObjectManager.hasPendingObjects()) {

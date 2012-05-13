@@ -77,6 +77,8 @@ public class DatabaseObjectManager {
 	 *
 	 * @param c The class type of the instance to return.
 	 * @return A new instance of the above class type.
+	 *
+	 * @since 0.0.1
 	 */
 	public <T> T create(Class<T> c) {
 		if (c.getAnnotation(Table.class) == null) {
@@ -105,6 +107,8 @@ public class DatabaseObjectManager {
 	 * @param c The class type of the objects to be fetched from the database.
 	 * @param criteria A criteria built with CriteriaBuilder describing the requirements of the returned objects.
 	 * @return The objects fetched from the database.
+	 *
+	 * @since 0.0.1
 	 */
 	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")
 	public <T> List<T> fetchList(Class<T> c, Criteria criteria) {
@@ -140,6 +144,8 @@ public class DatabaseObjectManager {
 	 * @param c The class type of the object to be fetched from the database.
 	 * @param criteria A criteria built with CriteriaBuilder describing the requirements of the returned object.
 	 * @return The object fetched from the database.
+	 *
+	 * @since 0.0.1
 	 */
 	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")
 	public <T> T fetch(Class<T> c, Criteria criteria) {
@@ -167,6 +173,8 @@ public class DatabaseObjectManager {
 	 * commited to the database. A call to this method either means that an INSERT will be made for each object (if the
 	 * object is a new one) or that an UPDATE call is made (if the object was previously fetched from the database).
 	 * It is recommended to minimize the number of calls to this method.
+	 *
+	 * @since 0.0.1
 	 */
 	@SuppressWarnings({"PMD.AvoidInstantiatingObjectsInLoops"})
 	public void synchronize() {

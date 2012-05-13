@@ -29,10 +29,10 @@ import com.ejwa.milliorm.annotation.Column;
 import com.ejwa.milliorm.annotation.Key;
 import java.lang.reflect.Field;
 
-class DatabaseOpenHelper extends SQLiteOpenHelper {
+class DatabaseOpener extends SQLiteOpenHelper {
 	private final Class<?>[] tables;
 
-	protected DatabaseOpenHelper(Context context, String databaseName, int version, Class<?> ...tables) {
+	protected DatabaseOpener(Context context, String databaseName, int version, Class<?> ...tables) {
 		super(context, databaseName, null, version);
 		this.tables = tables;
 	}
@@ -73,7 +73,7 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
 			}
 
 			final String create = "CREATE TABLE " + t.getSimpleName().toUpperCase() + "(" + tableMembers + ")";
-			Log.i(DatabaseOpenHelper.class.getName() , create);
+			Log.i(DatabaseOpener.class.getName() , create);
 			database.execSQL(create);
 		}
 	}
