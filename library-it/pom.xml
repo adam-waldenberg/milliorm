@@ -36,17 +36,7 @@
 		<plugins>
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-				<artifactId>maven-android-plugin</artifactId>
-				<configuration>
-					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
-					<sdk>
-						<platform>7</platform>
-					</sdk>
-					<deleteConflictingFiles>true</deleteConflictingFiles>
-					<undeployBeforeDeploy>true</undeployBeforeDeploy>
-					<coreLibrary>true</coreLibrary>
-				</configuration>
-				<extensions>true</extensions>
+				<artifactId>android-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
