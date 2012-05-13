@@ -67,7 +67,7 @@ public class DatabaseObjectManager {
 		final String setterName = makeCamelizedMethodString(field, "set");
 		final Method method = object.getClass().getMethod(setterName, new Class[] { field.getType() });
 
-		method.invoke(object, new Object[] { value });		
+		method.invoke(object, new Object[] { value });
 	}
 
 	/**
@@ -159,7 +159,7 @@ public class DatabaseObjectManager {
 		final String getterName = makeCamelizedMethodString(field, prefix);
 		final Method method = object.getClass().getMethod(getterName, (Class<?>[]) null);
 
-		return method.invoke(object, (Object[]) null);		
+		return method.invoke(object, (Object[]) null);
 	}
 
 	/**
